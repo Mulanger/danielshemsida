@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VASS Sliperi och Knivservice</title>
+    
+    <!-- Laddar in Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Laddar in Inter typsnitt -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind konfiguration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f6f6f6',
+                            100: '#e7e7e7',
+                            900: '#111111',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Lite extra polering för specifika element */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-brand-900 font-sans flex flex-col min-h-screen selection:bg-brand-900 selection:text-white">
+
+    <nav class="glass-nav sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logotyp -->
+                <a href="#" class="flex items-center">
+                    <img src="1000005485.jpg" alt="VASS Sliperi och Knivservice" class="h-10 sm:h-12 w-auto mix-blend-multiply object-contain hover:opacity-90 transition-opacity">
+                </a>
+                
+                <!-- Länkar -->
+                <div class="hidden sm:flex space-x-8">
+                    <a href="#tjanster" class="text-sm font-semibold tracking-wide hover:text-gray-500 transition-colors uppercase">Tjänster</a>
+                    <a href="#priser" class="text-sm font-semibold tracking-wide hover:text-gray-500 transition-colors uppercase">Priser</a>
+                    <a href="#kontakt" class="text-sm font-semibold tracking-wide hover:text-gray-500 transition-colors uppercase">Kontakt</a>
+                </div>
+                
+                <!-- Mobilmenyknapp (Endast visuell i detta demo) -->
+                <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-12">
+            
+            <div class="w-full lg:w-1/2 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-sm font-medium mb-6">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span> Öppet för inlämning
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight uppercase">
+                    Vi ger dina knivar <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-brand-900">nytt liv.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0">
+                    Professionell slipning av köksknivar, saxar och verktyg för både hemmakockar och restauranger. Vi slipar för hand för perfekt resultat.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#priser" class="px-8 py-4 bg-brand-900 text-white rounded-xl font-bold shadow-lg hover:bg-gray-800 transition-transform hover:-translate-y-0.5 active:translate-y-0">
+                        Se vår prislista
+                    </a>
+                    <a href="#kontakt" class="px-8 py-4 bg-white text-brand-900 border-2 border-brand-900 rounded-xl font-bold hover:bg-brand-50 transition-colors">
+                        Kontakta oss
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero grafiskt element -->
+            <div class="w-full lg:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md aspect-square bg-gray-100 rounded-[2.5rem] p-8 flex items-center justify-center shadow-inner overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
+                    <!-- Abstrakt kniv/skärpa representation -->
+                    <svg class="relative z-10 w-4/5 h-4/5 text-gray-800" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 80 L80 20 L85 25 L25 85 Z" fill="currentColor"/>
+                        <path d="M25 85 C40 85 85 40 85 25 L80 20 C80 35 35 80 20 80 Z" fill="#666"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="priser" class="py-20 bg-brand-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold uppercase tracking-wide mb-4 inline-block relative">
+                    Prispaket
+                    <div class="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-brand-900 rounded-full"></div>
+                </h2>
+                <p class="text-gray-600 mt-4">Välj det som passar dina behov bäst.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <!-- Standard Kort -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex flex-col transition-shadow hover:shadow-md">
+                    <h3 class="text-xl font-bold uppercase tracking-wide text-gray-500 mb-2">Standard</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-5xl font-extrabold">95:-</span>
+                        <span class="text-gray-500 font-medium">/ kniv</span>
+                    </div>
+                    <p class="text-gray-600 mb-8 flex-grow">Perfekt för vardagsknivar. Maskinslipning med vattenkylning för att skona stålet, avslutande bryning på läderstrigel.</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-sm font-medium">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Europeiska knivar
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Mindre saxar
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Proffs Kort -->
+                <div class="bg-brand-900 text-white rounded-3xl p-8 shadow-xl flex flex-col relative transform md:-translate-y-4">
+                    <div class="absolute top-0 right-8 -translate-y-1/2">
+                        <span class="bg-white text-brand-900 text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full">Populärast</span>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase tracking-wide text-gray-300 mb-2">Proffs</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-5xl font-extrabold">145:-</span>
+                        <span class="text-gray-400 font-medium">/ kniv</span>
+                    </div>
+                    <p class="text-gray-300 mb-8 flex-grow">För dina finaste knivar. Handslipning på japanska våtstenar i flera steg. Ger en extremt fin och hållbar egg.</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-sm font-medium">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Japanska knivar & Damaskus
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Exakt vinkelanpassning
+                        </li>
+                        <li class="flex items-center gap-3 text-sm font-medium">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Polering av egg
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="tjanster" class="bg-white p-8 sm:p-12 rounded-3xl shadow-sm border border-gray-100">
+                <h3 class="text-2xl font-bold mb-8 uppercase text-center">Fler tjänster</h3>
+                
+                <div class="space-y-4">
+                    <!-- List Item -->
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 border-b border-gray-100">
+                        <div class="mb-2 sm:mb-0">
+                            <strong class="text-lg block">Brödknivar (Tandad egg)</strong>
+                            <span class="text-sm text-gray-500">Kräver specialverktyg och tålamod.</span>
+                        </div>
+                        <span class="font-bold text-lg bg-gray-50 px-3 py-1 rounded-lg">120:-</span>
+                    </div>
+                    <!-- List Item -->
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 border-b border-gray-100">
+                        <div class="mb-2 sm:mb-0">
+                            <strong class="text-lg block">Frisörsax / Skräddarsax</strong>
+                            <span class="text-sm text-gray-500">Demontering och precisionsslipning.</span>
+                        </div>
+                        <span class="font-bold text-lg bg-gray-50 px-3 py-1 rounded-lg">250:-</span>
+                    </div>
+                    <!-- List Item -->
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 border-b border-gray-100">
+                        <div class="mb-2 sm:mb-0">
+                            <strong class="text-lg block">Omprofilering / Reparation av bruten spets</strong>
+                            <span class="text-sm text-gray-500">Rädda en trasig kniv. Pris kan variera beroende på skada.</span>
+                        </div>
+                        <span class="font-bold text-lg bg-gray-50 px-3 py-1 rounded-lg">fr. 150:-</span>
+                    </div>
+                    <!-- List Item -->
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4">
+                        <div class="mb-2 sm:mb-0">
+                            <strong class="text-lg block">Yxor & Trädgårdsredskap</strong>
+                            <span class="text-sm text-gray-500">Grovslipning och skärpning.</span>
+                        </div>
+                        <span class="font-bold text-lg bg-gray-50 px-3 py-1 rounded-lg">fr. 80:-</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="py-12 bg-brand-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-brand-900 to-gray-800 rounded-3xl p-8 sm:p-10 text-center text-white shadow-xl relative overflow-hidden">
+                <!-- Dekorativ cirkel -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-white opacity-5 rounded-full blur-2xl"></div>
+                
+                <h3 class="text-2xl font-bold uppercase tracking-wide mb-3 relative z-10">Kockens special: Mängdrabatt!</h3>
+                <p class="text-lg text-gray-300 relative z-10 mb-6">
+                    Lämna in dina knivar i grupp. Om du slipar <strong>5 knivar</strong> bjuder vi på den billigaste.
+                </p>
+                <p class="text-sm font-medium italic text-gray-400 relative z-10">
+                    * Gäller ej reparationer eller specialverktyg.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontakt" class="bg-white border-t border-gray-200 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                
+                <!-- Info block -->
+                <div>
+                    <div class="flex items-center justify-center md:justify-start mb-6">
+                        <img src="1000005485.jpg" alt="VASS Sliperi och Knivservice" class="h-14 sm:h-16 w-auto mix-blend-multiply object-contain">
+                    </div>
+                    <p class="text-gray-500 mb-4 text-sm">
+                        Din lokala expert på knivslipning. Vi sätter en ära i att leverera perfekt skärpa till dina viktigaste köksredskap.
+                    </p>
+                </div>
+
+                <!-- Kontakt block -->
+                <div>
+                    <h4 class="font-bold uppercase tracking-wider mb-6 text-sm text-gray-900">Kontakt & Inlämning</h4>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex flex-col sm:flex-row sm:items-center gap-2 justify-center md:justify-start">
+                            <strong class="text-gray-900">Adress:</strong> Stålgatan 14, 123 45 Slipköping
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center gap-2 justify-center md:justify-start">
+                            <strong class="text-gray-900">Tel:</strong> 070-123 45 67
+                        </li>
+                        <li class="flex flex-col sm:flex-row sm:items-center gap-2 justify-center md:justify-start">
+                            <strong class="text-gray-900">E-post:</strong> 
+                            <a href="mailto:info@vass-sliperi.se" class="font-bold underline text-brand-900 hover:text-gray-600 transition">info@vass-sliperi.se</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Öppettider block -->
+                <div>
+                    <h4 class="font-bold uppercase tracking-wider mb-6 text-sm text-gray-900">Öppettider</h4>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex justify-between items-center max-w-[200px] mx-auto md:mx-0">
+                            <span>Mån - Tors:</span> <span class="font-medium text-brand-900">10.00 - 18.00</span>
+                        </li>
+                        <li class="flex justify-between items-center max-w-[200px] mx-auto md:mx-0">
+                            <span>Fredag:</span> <span class="font-medium text-brand-900">10.00 - 16.00</span>
+                        </li>
+                        <li class="flex justify-between items-center max-w-[200px] mx-auto md:mx-0">
+                            <span>Helg:</span> <span class="font-medium text-gray-400">Stängt</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            
+            <div class="mt-16 pt-8 border-t border-gray-100 text-center text-sm text-gray-400">
+                <p>&copy; 2026 VASS Sliperi och Knivservice. Alla rättigheter förbehållna.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

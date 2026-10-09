@@ -1,0 +1,4 @@
+node_modules/
+dist/
+public/favicon-assets-2026/
+*.log
