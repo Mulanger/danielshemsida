@@ -22,16 +22,17 @@ function ImageCompare() {
 }
 
 const faqItems = [
-  { value: 'faq-1', title: 'Hur fungerar slipningen?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim, nulla at pulvinar consequat, libero justo feugiat sem, vitae malesuada nisl lorem non urna.' },
-  { value: 'faq-2', title: 'Vilka knivar och verktyg slipar du?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt, justo sed luctus tincidunt, neque lacus posuere est, vitae blandit erat arcu vitae nibh.' },
-  { value: 'faq-3', title: 'Hur lämnar jag in mina knivar?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo, massa id feugiat consequat, neque libero sodales justo, ac tristique purus velit at arcu.' },
-  { value: 'faq-4', title: 'Kan jag få ett kuvert skickat till mig?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Aliquam erat volutpat, sed tristique sapien dignissim non.' },
-  { value: 'faq-5', title: 'Hur lång tid tar en slipning?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel sem vitae lectus facilisis pretium, eget tincidunt justo posuere.' },
-  { value: 'faq-6', title: 'Vad kostar det att slipa en kniv?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consequat, erat non varius porttitor, mi lectus volutpat arcu, vel tincidunt ex justo vitae lorem.' },
-  { value: 'faq-7', title: 'Finns det mängdrabatt?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae sem at augue accumsan posuere. Sed consequat, nibh vitae feugiat aliquet, urna sapien aliquet eros.' },
-  { value: 'faq-8', title: 'Kan du reparera skador på eggen?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at eros in sapien lacinia blandit. Etiam sed justo vel felis finibus malesuada.' },
-  { value: 'faq-9', title: 'Hur får jag tillbaka mina verktyg?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat lacus id nunc dignissim, eget sollicitudin enim bibendum.' },
-  { value: 'faq-10', title: 'Hur kontaktar jag dig?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam facilisis, sapien vitae ullamcorper tincidunt, massa mi faucibus neque, non vulputate ipsum sem sed arcu.' },
+  { value: 'faq-1', title: 'Hur går slipningen till?', content: 'Slipningen genomförs i två steg:\n\nGrundslipning: Arbetet utförs antingen på ett vattenkylt band, en våtstensmaskin eller med japanska slipstenar. Det beror på verktyget och hur slitet det är.\n\nSlutfinish: Den råegg som bildas tas bort med hjälp av fina stenar och läder för att skapa en helt ren egg som skär effektivt.' },
+  { value: 'faq-2', title: 'Vad är skillnaden mellan Standard- och Pro-slipning?', content: 'Standard-slipningen (89 kr) ger en handslipad egg som ofta blir vassare än när kniven var ny. Pro-slipningen (139 kr) innebär att eggen blir extra polerad på finkorniga stenar. Det ger en blank finish och rakbladsskärpa.' },
+  { value: 'faq-3', title: 'Vad innebär det att “tunna ur” ett knivblad?', content: 'Att tunna ur bladet innebär att jag tar bort material ovanför själva eggen. Det gör att kniven skär betydligt mer effektivt och glider mycket lättare genom råvarorna. Jag gör alltid en kostnadsfri bedömning utifrån dina användningsområden för att se om kniven behöver tunnas ur.' },
+  { value: 'faq-4', title: 'Kostar det extra om min kniv har hack eller bruten spets?', content: 'Små jack och trubbiga spetsar åtgärdar jag alltid utan extra kostnad vid en vanlig grundslipning. Rör det sig om djupa jack (2 mm eller mer) eller en helt bruten spets tillkommer en kostnad från 39–59 kr, men jag ger dig alltid en fast offert innan arbetet påbörjas.' },
+  { value: 'faq-5', title: 'Hur fungerar er “100 % nöjd kundgaranti”?', content: 'Jag är yrkesaktiv kock och lämnar aldrig ifrån mig en kniv som inte lever upp till min förväntan. Därför testar jag alla knivar före leverans. Skulle slipningen ändå inte leva upp till dina förväntningar är det bara att kontakta mig så löser jag det.' },
+  { value: 'faq-6', title: 'Hur gör jag för att lämna in knivarna?', content: 'Du kan antingen lämna in dem själv hos mig på Rapidgatan 38 i Falköping eller välja utkörning. Utkörning eller upphämtning kostar 69 kr per tillfälle och erbjuds inom Falköpings tätort.' },
+  { value: 'faq-7', title: 'Slipar du andra redskap än knivar?', content: 'Självklart. Jag slipar bland annat hushålls- och kökssaxar (119 kr) samt stämjärn (89 kr). Har du något annat som du önskar få slipat är du välkommen att skicka en förfrågan.' },
+  { value: 'faq-8', title: 'Slipar du alla typer av knivar?', content: 'Ja, de allra flesta. Utöver köksknivar slipar jag även jaktknivar, arbetsknivar, buköppnare och fällknivar. Jag slipar också brödknivar, men erbjuder inte omtandning.' },
+  { value: 'faq-9', title: 'Erbjuder du någon mängdrabatt?', content: 'Ja. Du får 10 % rabatt när du lämnar in fem eller fler knivar. Har du tio eller fler knivar bjuder jag dessutom på fri hämtning och avlämning inom Falköpings tätort.' },
+  { value: 'faq-10', title: 'Är min trasiga kniv värd att reparera?', content: 'Om du är osäker på om kniven är kostnadsmässigt värd att laga kan du skicka in närbilder på den till mig. Jag tittar på bilderna och ger dig en kostnadsfri bedömning av vad som kan göras.' },
+  { value: 'faq-11', title: 'Hur lång tid tar det och hur betalar jag?', content: 'Oftast är arbetet slutfört på 1–2 dagar. Därefter skickar jag en betalningsförfrågan eller faktura till företag, och du kan hämta dina nyslipade redskap. Bokar du via hemsidan kan du även betala direkt online.' },
 ]
 
 function FaqColumn({ items }) {
@@ -50,7 +51,7 @@ function FaqColumn({ items }) {
           </button>
         </h3>
         <div id={contentId} className={`grid transition-[grid-template-rows,opacity] duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
-          <div className="min-h-0 overflow-hidden"><p className="px-5 pb-5 text-sm leading-relaxed text-gray-500">{item.content}</p></div>
+          <div className="min-h-0 overflow-hidden"><p className="whitespace-pre-line px-5 pb-5 text-sm leading-relaxed text-gray-500">{item.content}</p></div>
         </div>
       </div>
     })}
@@ -185,8 +186,8 @@ function App() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 max-w-xl"><p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">VASS / FRÅGOR</p><h2 className="text-3xl font-bold uppercase tracking-tight text-zinc-900 md:text-4xl">Vanliga frågor</h2><p className="mt-4 max-w-lg text-base leading-relaxed text-gray-500">Här hittar du svar på vanliga frågor om slipning, inlämning och service.</p></div>
           <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 md:gap-4">
-            <FaqColumn items={faqItems.slice(0, 5)} />
-            <FaqColumn items={faqItems.slice(5)} />
+            <FaqColumn items={faqItems.slice(0, 6)} />
+            <FaqColumn items={faqItems.slice(6)} />
           </div>
         </div>
       </section>
