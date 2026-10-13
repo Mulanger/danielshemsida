@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 const knifeServices = [
-  { value: 'grund', label: 'Grundslipning', price: 119, display: '119 kr' },
-  { value: 'lyx', label: 'Lyxslipning Pro', price: 139, display: '139 kr' },
-  { value: 'sekatör', label: 'Övrigt: Sekatör / Sax', price: 69, display: '69 kr' },
-  { value: 'grensax', label: 'Övrigt: Grensax / Yxa', price: 79, display: '79–119 kr', variable: true },
-  { value: 'spets', label: 'Reparation: Avbruten knivspets', price: 70, display: '+70 kr' },
-  { value: 'hack', label: 'Reparation: Större hack i eggen', price: 50, display: '+50 kr' },
+  { value: 'grund', label: 'Grundslipning', price: 89, display: '89 kr' },
+  { value: 'lyx', label: 'Lyxslipning', price: 139, display: '139 kr' },
+  { value: 'sax', label: 'Sax', price: 119, display: '119 kr' },
+  { value: 'stamjarn', label: 'Stämjärn', price: 89, display: '89 kr' },
+  { value: 'brodkniv', label: 'Brödkniv (gäller ej omtandning)', price: 139, display: '139 kr' },
+  { value: 'latt-tunning', label: 'Lätt tunning av kniv', price: 129, display: '129 kr' },
+  { value: 'storre-tunning', label: 'Större tunning av kniv', price: 249, display: '249 kr' },
+  { value: 'bruten-spets', label: 'Bruten spets', price: 39, display: 'från 39 kr', variable: true },
+  { value: 'djupa-jack', label: 'Djupa jack (2 mm+)', price: 59, display: 'från 59 kr', variable: true },
 ]
 function ImageCompare() {
   const [position, setPosition] = useState(50)
@@ -23,7 +26,7 @@ function ImageCompare() {
 
 const faqItems = [
   { value: 'faq-1', title: 'Hur går slipningen till?', content: 'Slipningen genomförs i två steg:\n\nGrundslipning: Arbetet utförs antingen på ett vattenkylt band, en våtstensmaskin eller med japanska slipstenar. Det beror på verktyget och hur slitet det är.\n\nSlutfinish: Den råegg som bildas tas bort med hjälp av fina stenar och läder för att skapa en helt ren egg som skär effektivt.' },
-  { value: 'faq-2', title: 'Vad är skillnaden mellan Standard- och Pro-slipning?', content: 'Standard-slipningen (89 kr) ger en handslipad egg som ofta blir vassare än när kniven var ny. Pro-slipningen (139 kr) innebär att eggen blir extra polerad på finkorniga stenar. Det ger en blank finish och rakbladsskärpa.' },
+  { value: 'faq-2', title: 'Vad är skillnaden mellan grund- och lyxslipning?', content: 'Grundslipningen (89 kr) ger en handslipad egg som ofta blir vassare än när kniven var ny. Lyxslipningen (139 kr) innebär att eggen blir extra polerad på finkorniga stenar. Det ger en blank finish och rakbladsskärpa.' },
   { value: 'faq-3', title: 'Vad innebär det att “tunna ur” ett knivblad?', content: 'Att tunna ur bladet innebär att jag tar bort material ovanför själva eggen. Det gör att kniven skär betydligt mer effektivt och glider mycket lättare genom råvarorna. Jag gör alltid en kostnadsfri bedömning utifrån dina användningsområden för att se om kniven behöver tunnas ur.' },
   { value: 'faq-4', title: 'Kostar det extra om min kniv har hack eller bruten spets?', content: 'Små jack och trubbiga spetsar åtgärdar jag alltid utan extra kostnad vid en vanlig grundslipning. Rör det sig om djupa jack (2 mm eller mer) eller en helt bruten spets tillkommer en kostnad från 39–59 kr, men jag ger dig alltid en fast offert innan arbetet påbörjas.' },
   { value: 'faq-5', title: 'Hur fungerar er “100 % nöjd kundgaranti”?', content: 'Jag är yrkesaktiv kock och lämnar aldrig ifrån mig en kniv som inte lever upp till min förväntan. Därför testar jag alla knivar före leverans. Skulle slipningen ändå inte leva upp till dina förväntningar är det bara att kontakta mig så löser jag det.' },
@@ -86,7 +89,7 @@ function SendKnifeModal({ onClose }) {
         <div className="space-y-5"><div className="grid gap-5 sm:grid-cols-2"><label className="block"><span className="mb-2 block text-xs font-bold uppercase tracking-widest text-gray-500">Namn</span><input required name="name" type="text" placeholder="Ditt namn" className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-gray-400 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10" /></label><label className="block"><span className="mb-2 block text-xs font-bold uppercase tracking-widest text-gray-500">Antal knivar</span><input required name="quantity" type="number" min="1" max="20" value={quantity} onChange={(event) => updateQuantity(event.target.value)} className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10" /></label></div>
           <label className="block"><span className="mb-2 block text-xs font-bold uppercase tracking-widest text-gray-500">Adress</span><input required name="address" type="text" placeholder="Gatuadress, postnummer och ort" className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition placeholder:text-gray-400 focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10" /></label>
           <fieldset><legend className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-500">Hur vill du lämna in?</legend><div className="grid gap-3 sm:grid-cols-2"><label className="flex cursor-pointer items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 has-[:checked]:border-zinc-900 has-[:checked]:ring-1 has-[:checked]:ring-zinc-900"><input required type="radio" name="delivery" value="dropoff" defaultChecked className="mt-1 accent-zinc-900" /><span><strong className="block text-sm text-zinc-900">Jag lämnar in själv</strong><small className="mt-1 block text-xs leading-relaxed text-gray-500">Jag möter dig vid receptionen.</small></span></label><label className="flex cursor-pointer items-start gap-3 rounded-xl border border-gray-200 bg-white p-4 has-[:checked]:border-zinc-900 has-[:checked]:ring-1 has-[:checked]:ring-zinc-900"><input required type="radio" name="delivery" value="envelope" className="mt-1 accent-zinc-900" /><span><strong className="block text-sm text-zinc-900">Skicka kuvert till mig</strong><small className="mt-1 block text-xs leading-relaxed text-gray-500">Jag skickar instruktioner.</small></span></label></div></fieldset>
-          <div><div className="mb-3 flex items-center justify-between"><span className="text-xs font-bold uppercase tracking-widest text-gray-500">Tjänst per kniv</span><span className="text-xs text-gray-400">{quantity} {quantity === 1 ? 'kniv' : 'knivar'}</span></div><div className="space-y-3">{selectedServices.map((selected, index) => <label key={index} className="flex items-center gap-3"><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-900 text-xs font-bold text-white">{index + 1}</span><select value={selected} onChange={(event) => updateService(index, event.target.value)} className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10">{knifeServices.map((service) => <option key={service.value} value={service.value}>{service.label} — {service.display}</option>)}</select></label>)}</div><p className="mt-3 text-xs italic text-gray-400">Grensax / Yxa räknas från 79 kr; slutpriset kan bli upp till 119 kr.</p></div>
+          <div><div className="mb-3 flex items-center justify-between"><span className="text-xs font-bold uppercase tracking-widest text-gray-500">Tjänst per kniv</span><span className="text-xs text-gray-400">{quantity} {quantity === 1 ? 'kniv' : 'knivar'}</span></div><div className="space-y-3">{selectedServices.map((selected, index) => <label key={index} className="flex items-center gap-3"><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-zinc-900 text-xs font-bold text-white">{index + 1}</span><select value={selected} onChange={(event) => updateService(index, event.target.value)} className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10">{knifeServices.map((service) => <option key={service.value} value={service.value}>{service.label} — {service.display}</option>)}</select></label>)}</div><p className="mt-3 text-xs italic text-gray-400">Bruten spets och djupa jack är från-priser. Jag lämnar alltid en fast offert innan arbetet påbörjas.</p></div>
         </div>
         <aside className="h-fit rounded-2xl bg-zinc-900 p-6 text-white sm:p-7 lg:sticky lg:top-6"><p className="text-xs font-bold uppercase tracking-widest text-gray-400">Prisöversikt</p><div className="mt-6 space-y-3 text-sm"><div className="flex justify-between text-gray-300"><span>{quantity} {quantity === 1 ? 'kniv' : 'knivar'}</span><span>{subtotal} kr</span></div>{discount > 0 && <div className="flex justify-between font-semibold text-white"><span>Mängdrabatt (10%)</span><span>−{discount} kr</span></div>}<div className="border-t border-white/15 pt-4"><div className="flex items-end justify-between"><span className="text-gray-400">Beräknat totalpris</span><strong className="text-3xl tracking-tight">{total} kr</strong></div></div></div><div className="mt-7 rounded-xl bg-white/10 p-4 text-xs leading-relaxed text-gray-300">{quantity >= 5 ? '10 % mängdrabatt är applicerad.' : `Lägg till ${5 - quantity} ${5 - quantity === 1 ? 'kniv' : 'knivar'} för att få 10 % mängdrabatt.`}{quantity >= 3 && <span className="mt-2 block text-white">Fri upphämtning i närområdet vid minst 3 knivar!</span>}</div><button type="submit" className="mt-7 w-full rounded-xl bg-white px-5 py-3.5 text-sm font-bold text-zinc-900 transition hover:bg-gray-200">Skicka förfrågan</button></aside>
       </form>}
@@ -144,14 +147,14 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
             <h3 className="text-xl font-bold uppercase tracking-wide text-gray-800 mb-2">Grundslipning</h3>
-            <div className="text-5xl font-extrabold text-zinc-900 my-6">119<span className="text-lg font-medium text-gray-500 ml-1">kr</span></div>
-            <p className="text-gray-600 leading-relaxed text-sm">Grundslipas på Japanska våtstenar upp till 3000 grit. Utmärkt för vanliga köksknivar.</p>
+            <div className="text-5xl font-extrabold text-zinc-900 my-6">89<span className="text-lg font-medium text-gray-500 ml-1">kr</span></div>
+            <p className="text-gray-600 leading-relaxed text-sm">Ny jämn egg – blir ofta vassare än ny.</p>
           </div>
           <div className="bg-zinc-900 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-400 to-white"></div>
-            <h3 className="text-xl font-bold uppercase tracking-wide text-white mb-2">Lyxslipning Pro</h3>
+            <h3 className="text-xl font-bold uppercase tracking-wide text-white mb-2">Lyxslipning</h3>
             <div className="text-5xl font-extrabold text-white my-6">139<span className="text-lg font-medium text-gray-400 ml-1">kr</span></div>
-            <p className="text-gray-300 leading-relaxed text-sm">Högpolerad rakbladsvass finish upp till 12 000 grit på Shapton-stenar för bästa skärpa.</p>
+            <p className="text-gray-300 leading-relaxed text-sm">Högpolerad och rakbladsvass finish på finkorniga stenar. För exklusiva knivar.</p>
           </div>
         </div>
 
@@ -161,22 +164,37 @@ function App() {
           Fri upphämtning i närområdet vid minst 3 knivar!
         </div>
 
-        <div id="tjanster" className="max-w-2xl mx-auto">
-          <h3 className="text-lg font-bold uppercase tracking-wide text-zinc-900 border-b border-gray-300 pb-2 mb-6">Fler Tjänster & Reparationer</h3>
-          <ul className="space-y-4">
-            <li className="flex justify-between items-center py-3 border-b border-gray-100"><span className="text-gray-700"><strong className="text-zinc-900 font-semibold">Övrigt:</strong> Sekatör / Sax</span><span className="font-bold text-zinc-900">69 kr</span></li>
-            <li className="flex justify-between items-center py-3 border-b border-gray-100"><span className="text-gray-700"><strong className="text-zinc-900 font-semibold">Övrigt:</strong> Grensax / Yxa</span><span className="font-bold text-zinc-900">79 - 119 kr</span></li>
-            <li className="flex justify-between items-center py-3 border-b border-gray-100"><span className="text-gray-700"><strong className="text-zinc-900 font-semibold">Reparation:</strong> Avbruten knivspets</span><span className="font-bold text-zinc-900">+70 kr</span></li>
-            <li className="flex justify-between items-center py-3 border-b border-gray-100"><span className="text-gray-700"><strong className="text-zinc-900 font-semibold">Reparation:</strong> Större hack i eggen</span><span className="font-bold text-zinc-900">+50 kr</span></li>
-          </ul>
-          <p className="text-sm text-gray-500 italic mt-6">* Mindre hack (upp till 1 mm) ingår i det ordinarie slipningspriset.</p>
+        <div id="tjanster" className="mx-auto max-w-4xl">
+          <h3 className="mb-8 border-b border-gray-300 pb-2 text-lg font-bold uppercase tracking-wide text-zinc-900">Tjänster & Reparationer</h3>
+          <div className="grid gap-10 md:grid-cols-2 md:gap-12">
+            <div>
+              <h4 className="mb-3 text-sm font-bold uppercase tracking-widest text-gray-400">Tjänster</h4>
+              <ul className="space-y-1">
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Grundslipning</span><span className="font-bold text-zinc-900">89 kr</span></li>
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Lyxslipning</span><span className="font-bold text-zinc-900">139 kr</span></li>
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Sax</span><span className="font-bold text-zinc-900">119 kr</span></li>
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Stämjärn</span><span className="font-bold text-zinc-900">89 kr</span></li>
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Brödkniv <span className="text-xs text-gray-400">(gäller ej omtandning)</span></span><span className="font-bold text-zinc-900">139 kr</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="mb-3 text-sm font-bold uppercase tracking-widest text-gray-400">Reparation och modifikation</h4>
+              <ul className="space-y-1">
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Lätt tunning av kniv</span><span className="font-bold text-zinc-900">129 kr</span></li>
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Större tunning av kniv</span><span className="font-bold text-zinc-900">249 kr</span></li>
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Bruten spets</span><span className="font-bold text-zinc-900">från 39 kr</span></li>
+                <li className="flex items-center justify-between gap-4 border-b border-gray-100 py-3"><span className="text-gray-700">Djupa jack (2 mm+)</span><span className="font-bold text-zinc-900">från 59 kr</span></li>
+              </ul>
+              <p className="mt-6 text-sm italic leading-relaxed text-gray-500">Mindre hack upp till 2 mm ingår i det ordinarie slipningspriset. På reparationer ger jag alltid en fast offert innan arbetet påbörjas.</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="om-mig" className="border-y border-gray-200 bg-gray-50 px-6 py-20 md:py-24">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
           <div className="flex min-h-[420px] flex-col justify-between rounded-2xl border border-gray-200 bg-white p-8 text-left shadow-sm md:p-12">
-            <div><p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">VASS / OM MIG</p><h2 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 uppercase md:text-4xl">Om Mig</h2><div className="space-y-6 text-base leading-relaxed text-gray-600 md:text-lg"><div><h3 className="mb-2 text-lg font-bold text-zinc-900 md:text-xl">Knivslipning i Falköping med äkta hantverk.</h3><p>Jag driver VASS Sliperi i Falköping och erbjuder handslipning av köksknivar, kockknivar, saxar och andra eggverktyg. Jag använder keramiska våtstenar och avverkar minimalt med stål för att bevara knivens livslängd och ge en rakbladsvass, jämn och hållbar egg.</p></div><p>Du kan lämna in dina knivar i Falköping eller kontakta mig för information om kuvert och upphämtning i närområdet. Vid minst tre knivar kan jag erbjuda fri upphämtning enligt överenskommelse.</p><p>Har du frågor om knivslipning, olika ståltyper eller vilken behandling som passar ditt verktyg? Hör av dig så hjälper jag dig gärna.</p></div></div><div className="mt-10 border-t border-gray-200 pt-5"><p className="mb-0 text-xs font-medium uppercase tracking-widest text-gray-400">Traditionell slipning · Personlig service</p></div>
+            <div><p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">VASS / OM MIG</p><h2 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 uppercase md:text-4xl">Om Mig</h2><div className="space-y-6 text-base leading-relaxed text-gray-600 md:text-lg"><p>Som entusiastisk och yrkesaktiv kock vet jag hur avgörande vassa redskap är för både arbetsglädje och resultat. Min filosofi är enkel: din kniv ska ha en perfekt balans mellan skärpa och hållbarhet, anpassad exakt för det du ska använda den till. Redskapet ska inte slipas mer än vad som behövs för att maximera dess livslängd.</p><p>Har du frågor om mina tjänster, specifika ståltyper eller vill boka upphämtning? Tveka inte att höra av dig.</p></div></div><div className="mt-10 border-t border-gray-200 pt-5"><p className="mb-0 text-xs font-medium uppercase tracking-widest text-gray-400">Traditionell slipning · Personlig service</p></div>
           </div>
           <div className="relative min-h-[420px] overflow-hidden rounded-2xl border border-gray-200 bg-gray-200 shadow-sm md:min-h-[520px]"><img src="/vass-workshop.jpg" alt="VASS sliperi i verkstaden" className="absolute inset-0 h-full w-full object-cover object-center" /><div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div><span className="absolute bottom-5 left-6 rounded-full bg-white/90 px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-zinc-900 shadow-sm">Min verkstad</span></div>
         </div>
