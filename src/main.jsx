@@ -13,7 +13,7 @@ function ImageCompare() {
   const [position, setPosition] = useState(50)
   return <div className="relative w-full max-w-sm aspect-square bg-gray-100 rounded-[2.5rem] shadow-inner overflow-hidden select-none">
     <img src="/knife-after.jpg" alt="Slipad kniv" draggable="false" className="absolute inset-0 w-full h-full object-cover" />
-    <div className="absolute inset-0 pointer-events-none" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}><img src="/knife-before.jfif" alt="Oslipad kniv" draggable="false" className="absolute inset-0 w-full h-full object-cover" /></div>
+    <div className="absolute inset-0 pointer-events-none" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}><img src="/knife-before-matched.jpg" alt="Oslipad kniv" draggable="false" className="absolute inset-0 w-full h-full object-cover" /></div>
     <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gray-700 shadow-sm">Före</span>
     <span className="absolute right-4 top-4 rounded-full bg-zinc-900/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">Efter</span>
     <div className="absolute inset-y-0 w-0.5 bg-white shadow-[0_0_8px_rgba(0,0,0,0.35)] pointer-events-none" style={{ left: `${position}%` }}><div className="absolute bottom-4 left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full bg-white text-zinc-900 shadow-lg"><svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5 3 12l5 7M16 5l5 7-5 7M4 12h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg></div></div>
