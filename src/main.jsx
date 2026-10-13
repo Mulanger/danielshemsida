@@ -21,6 +21,42 @@ function ImageCompare() {
   </div>
 }
 
+const faqItems = [
+  { value: 'faq-1', title: 'Hur fungerar slipningen?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim, nulla at pulvinar consequat, libero justo feugiat sem, vitae malesuada nisl lorem non urna.' },
+  { value: 'faq-2', title: 'Vilka knivar och verktyg slipar du?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt, justo sed luctus tincidunt, neque lacus posuere est, vitae blandit erat arcu vitae nibh.' },
+  { value: 'faq-3', title: 'Hur lämnar jag in mina knivar?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo, massa id feugiat consequat, neque libero sodales justo, ac tristique purus velit at arcu.' },
+  { value: 'faq-4', title: 'Kan jag få ett kuvert skickat till mig?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Aliquam erat volutpat, sed tristique sapien dignissim non.' },
+  { value: 'faq-5', title: 'Hur lång tid tar en slipning?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel sem vitae lectus facilisis pretium, eget tincidunt justo posuere.' },
+  { value: 'faq-6', title: 'Vad kostar det att slipa en kniv?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consequat, erat non varius porttitor, mi lectus volutpat arcu, vel tincidunt ex justo vitae lorem.' },
+  { value: 'faq-7', title: 'Finns det mängdrabatt?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae sem at augue accumsan posuere. Sed consequat, nibh vitae feugiat aliquet, urna sapien aliquet eros.' },
+  { value: 'faq-8', title: 'Kan du reparera skador på eggen?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at eros in sapien lacinia blandit. Etiam sed justo vel felis finibus malesuada.' },
+  { value: 'faq-9', title: 'Hur får jag tillbaka mina verktyg?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat lacus id nunc dignissim, eget sollicitudin enim bibendum.' },
+  { value: 'faq-10', title: 'Hur kontaktar jag dig?', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam facilisis, sapien vitae ullamcorper tincidunt, massa mi faucibus neque, non vulputate ipsum sem sed arcu.' },
+]
+
+function FaqColumn({ items }) {
+  const [openItems, setOpenItems] = useState([items[0].value])
+  const toggleItem = (value) => setOpenItems((current) => current.includes(value) ? current.filter((item) => item !== value) : [...current, value])
+
+  return <div className="w-full space-y-2">
+    {items.map((item) => {
+      const isOpen = openItems.includes(item.value)
+      const contentId = `${item.value}-content`
+      return <div key={item.value} className={`overflow-hidden rounded-sm bg-white transition-shadow duration-300 ${isOpen ? 'shadow-lg' : 'shadow-sm'}`}>
+        <h3>
+          <button type="button" aria-expanded={isOpen} aria-controls={contentId} onClick={() => toggleItem(item.value)} className="flex w-full items-center justify-between gap-6 px-5 py-4 text-left text-sm font-medium text-zinc-900 transition-colors hover:text-gray-600 sm:text-base">
+            <span>{item.title}</span>
+            <svg className={`h-4 w-4 shrink-0 text-gray-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </button>
+        </h3>
+        <div id={contentId} className={`grid transition-[grid-template-rows,opacity] duration-300 ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+          <div className="min-h-0 overflow-hidden"><p className="px-5 pb-5 text-sm leading-relaxed text-gray-500">{item.content}</p></div>
+        </div>
+      </div>
+    })}
+  </div>
+}
+
 
 
 function SendKnifeModal({ onClose }) {
@@ -142,6 +178,16 @@ function App() {
             <div><p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">VASS / OM MIG</p><h2 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 uppercase md:text-4xl">Om Mig</h2><div className="space-y-6 text-base leading-relaxed text-gray-600 md:text-lg"><p><strong className="mb-2 block text-zinc-900">Äkta hantverk för dina verktyg.</strong>Jag slipar köksknivar och eggverktyg på traditionellt vis med keramiska våtstenar. Genom att tunna ut eggen och avverka minimalt med stål förlängs knivens livslängd, samtidigt som du får en rakbladsvass skärupplevelse som maskinslipning aldrig kan matcha.</p><p>Har du frågor om mina tjänster, specifika ståltyper eller vill boka upphämtning? Tveka inte att höra av dig.</p></div></div><div className="mt-10 border-t border-gray-200 pt-5"><p className="mb-0 text-xs font-medium uppercase tracking-widest text-gray-400">Traditionell slipning · Personlig service</p></div>
           </div>
           <div className="relative min-h-[420px] overflow-hidden rounded-2xl border border-gray-200 bg-gray-200 shadow-sm md:min-h-[520px]"><img src="/vass-workshop.jpg" alt="VASS sliperi i verkstaden" className="absolute inset-0 h-full w-full object-cover object-center" /><div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div><span className="absolute bottom-5 left-6 rounded-full bg-white/90 px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-zinc-900 shadow-sm">Min verkstad</span></div>
+        </div>
+      </section>
+
+      <section id="vanliga-fragor" className="border-b border-gray-200 bg-white px-6 py-20 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 max-w-xl"><p className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">VASS / FRÅGOR</p><h2 className="text-3xl font-bold uppercase tracking-tight text-zinc-900 md:text-4xl">Vanliga frågor</h2><p className="mt-4 max-w-lg text-base leading-relaxed text-gray-500">Här hittar du svar på vanliga frågor om slipning, inlämning och service.</p></div>
+          <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2 md:gap-4">
+            <FaqColumn items={faqItems.slice(0, 5)} />
+            <FaqColumn items={faqItems.slice(5)} />
+          </div>
         </div>
       </section>
 
