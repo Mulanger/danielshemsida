@@ -5,3 +5,4 @@ public/favicon-assets-2026/
 .env
 .env.*
 !.env.example
+server/booking-config.php
