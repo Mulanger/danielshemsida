@@ -254,6 +254,7 @@ function BookingCheckout({ open, onClose, quantities }) {
   const [dropOff, setDropOff] = useState('')
   const [returnMethod, setReturnMethod] = useState('')
   const [paymentMethod, setPaymentMethod] = useState('')
+  const [termsRead, setTermsRead] = useState(false)
   const [completed, setCompleted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
@@ -284,7 +285,7 @@ function BookingCheckout({ open, onClose, quantities }) {
     : step === 2 ? Boolean(dropOff)
       : step === 3 ? Boolean(returnMethod)
         : step === 4 ? Boolean(paymentMethod)
-          : step === 5 ? true : false
+          : step === 5 ? termsRead : false
   const nextStep = async (event) => {
     event?.preventDefault()
     if (!canContinue || submitting) return
@@ -380,7 +381,7 @@ function BookingCheckout({ open, onClose, quantities }) {
             {choice({ name: 'payment-method', value: 'swish', selected: paymentMethod, onChange: setPaymentMethod, title: 'Swish', description: 'Få en Swish-länk när redskapen är klara.', icon: <img src="/swish-logo.png" alt="" className="h-11 w-11 object-contain" /> })}
           </div>{paymentMethod === 'cash' && <p className="mt-5 rounded-xl border border-gray-200 px-4 py-3 text-sm leading-relaxed text-gray-600">Du betalar kontant när redskapen lämnas tillbaka eller när du hämtar dem.</p>}{paymentMethod === 'swish' && <p className="mt-5 rounded-xl border border-gray-200 px-4 py-3 text-sm leading-relaxed text-gray-600">När redskapen är färdigslipade skickar jag en Swish-länk inför upphämtning eller avlämning.</p>}</div>}
 
-          {step === 5 && <div><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-400">Sista steget</p><h3 className="mt-2 text-2xl font-bold tracking-tight text-zinc-900">Köpvillkor</h3></div><p className="mt-4 text-sm leading-relaxed text-gray-500">Läs sammanfattningen av villkoren innan du slutför bokningen.</p><div tabIndex="0" className="mt-5 h-[290px] overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 px-5 py-5 text-sm leading-7 text-gray-600 outline-none focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10" aria-label="Sammanfattning av köpvillkor, skrolla till slutet">
+          {step === 5 && <div><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-gray-400">Sista steget</p><h3 className="mt-2 text-2xl font-bold tracking-tight text-zinc-900">Köpvillkor</h3></div><p className="mt-4 text-sm leading-relaxed text-gray-500">Läs sammanfattningen och skrolla till slutet för att aktivera knappen Slutför bokning.</p><div tabIndex="0" onScroll={(event) => { const element = event.currentTarget; if (element.scrollHeight - element.scrollTop - element.clientHeight <= 40) setTermsRead(true) }} className="mt-5 h-[290px] overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 px-5 py-5 text-sm leading-7 text-gray-600 outline-none focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10" aria-label="Sammanfattning av köpvillkor, skrolla till slutet">
             <p className="mb-5 font-bold text-zinc-900">Sammanfattning av villkoren</p>
             <section className="mb-5"><h4 className="font-bold text-zinc-900">Bokning, arbete och pris</h4><p className="mt-1">Avtalet ingås när du slutför bokningen eller lämnar in dina redskap. Aktuellt pris framgår av bokningen. Arbetet utförs fackmässigt och är normalt klart inom 1–2 dagar. Tilläggsarbete utförs bara efter att du har godkänt det.</p></section>
             <section className="mb-5"><h4 className="font-bold text-zinc-900">Inlämning och återlämning</h4><p className="mt-1">Du kan lämna och hämta själv eller boka upphämtning och utkörning inom Falköpings tätort. Upphämtning kostar 69 kr, men är gratis vid minst 3 redskap. Utkörning kostar 69 kr. Redskapen ska förpackas säkert och märkas med namn och telefonnummer.</p></section>
@@ -389,7 +390,7 @@ function BookingCheckout({ open, onClose, quantities }) {
             <section className="mb-5"><h4 className="font-bold text-zinc-900">Ångerrätt och reklamation</h4><p className="mt-1">Som konsument har du normalt 14 dagars ångerrätt vid distansbokning. Om arbetet har påbörjats betalar du för den del som redan utförts, och när tjänsten är helt utförd upphör ångerrätten. Är du inte nöjd ska du kontakta VASS så att felet kan rättas. Dina lagstadgade konsumenträttigheter påverkas inte.</p></section>
             <p className="mb-5">Villkoren gäller tillsammans med svensk konsumentlagstiftning. Vid en tvist kan du vända dig till Allmänna reklamationsnämnden (ARN).</p>
             <a href="/?policy=terms" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 font-bold text-zinc-900 underline decoration-gray-300 decoration-2 underline-offset-4 transition hover:decoration-zinc-900">Läs fullständiga köpvillkor <span aria-hidden="true" className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span></a>
-          </div><p className="mt-3 text-xs text-gray-500">Genom att slutföra bokningen godkänner du köpvillkoren.</p></div>}
+          </div>{termsRead ? <p className="mt-3 flex items-center gap-2 text-xs font-semibold text-zinc-900"><span className="flex h-5 w-5 items-center justify-center rounded-full bg-zinc-900 text-white">✓</span>Du har skrollat igenom villkoren.</p> : <p className="mt-3 text-xs text-gray-400">Slutför aktiveras när du når slutet av texten.</p>}</div>}
           </>}
         </div>
 
