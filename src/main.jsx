@@ -202,16 +202,15 @@ function App() {
       </section>      <section id="priser" className="py-20 px-6 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold tracking-tight text-center text-zinc-900 uppercase mb-12">Prislista & Slipning</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center">
-            <h3 className="text-xl font-bold uppercase tracking-wide text-gray-800 mb-2">Slipning av kniv</h3>
-            <div className="text-5xl font-extrabold text-zinc-900 my-6">99<span className="text-lg font-medium text-gray-500 ml-1">kr</span></div>
-            <p className="text-gray-600 leading-relaxed text-sm">Ny jämn egg. Ofta vassare än ny!</p>
+          <div className="grid min-h-[260px] grid-rows-[68px_82px_52px] items-center rounded-2xl border border-gray-200 bg-white px-7 py-7 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-8">
+            <h3 className="flex h-full items-center justify-center text-xl font-bold uppercase leading-tight tracking-wide text-gray-800">Slipning av kniv</h3>
+            <div className="flex h-full items-center justify-center text-5xl font-extrabold text-zinc-900">99<span className="ml-1 text-lg font-medium text-gray-500">kr</span></div>
+            <p className="flex h-full items-center justify-center text-sm leading-relaxed text-gray-600">Ny jämn egg. Ofta vassare än ny!</p>
           </div>
-          <div className="bg-zinc-900 rounded-2xl p-8 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-400 to-white"></div>
-            <h3 className="text-xl font-bold uppercase tracking-wide text-white mb-2">Paketerbjudande – 4 st slipningar</h3>
-            <div className="text-5xl font-extrabold text-white my-6">15<span className="text-lg font-medium text-gray-400 ml-1">% rabatt</span></div>
-            <p className="text-gray-300 leading-relaxed text-sm">20 % rabatt för återkommande kunder.</p>
+          <div className="grid min-h-[260px] grid-rows-[68px_82px_52px] items-center rounded-2xl border border-zinc-900 bg-zinc-900 px-7 py-7 text-center shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:px-8">
+            <h3 className="flex h-full items-center justify-center text-xl font-bold uppercase leading-tight tracking-wide text-white">Paketerbjudande – 4 st slipningar</h3>
+            <div className="flex h-full items-center justify-center text-5xl font-extrabold text-white">15<span className="ml-1 text-lg font-medium text-gray-400">% rabatt</span></div>
+            <p className="flex h-full items-center justify-center text-sm leading-relaxed text-gray-300">20 % rabatt för återkommande kunder.</p>
           </div>
         </div>
 
